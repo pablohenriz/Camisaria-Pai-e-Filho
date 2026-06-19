@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sobre Nós — Camisaria Pai & Filho</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="stylesheet" href="css/style.css">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap"
+        rel="stylesheet" />
+</head>
+
+<body>
+
+    <!-- MOBILE DRAWER -->
+    <div class="mobile-drawer" id="drawer">
+        <div class="mobile-drawer-links">
+            <a class="mobile-drawer-link" href="./index.html" onclick="closeDrawer()">Início</a>
+            <a class="mobile-drawer-link" href="./produtos.html" onclick="closeDrawer()">Produtos</a>
+            <a class="mobile-drawer-link" href="./blog.html" onclick="closeDrawer()">Blog</a>
+            <a class="mobile-drawer-link" href="./sobre.html" onclick="closeDrawer()">Sobre Nós</a>
+            <a class="mobile-drawer-link" href="./contato.html" onclick="closeDrawer()">Contato</a>
+        </div>
+    </div>
+
+    <!-- NAVBAR -->
+    <header id="nav">
+        <a class="nav-logo" href="./index.html">
+            <div class="nav-logo-mark">C</div>
+            <div>
+                <span class="nav-logo-sub">Camisaria</span>
+                <span class="nav-logo-name">Pai &amp; Filho</span>
+            </div>
+        </a>
+        <nav class="nav-links">
+            <a class="nav-link" href="./index.html">Início</a>
+            <a class="nav-link" href="./produtos.html">Produtos</a>
+            <a class="nav-link" href="./blog.html">Blog</a>
+            <a class="nav-link active" href="./sobre.html">Sobre Nós</a>
+            <a class="nav-link" href="./contato.html">Contato</a>
+        </nav>
+        <div class="nav-right">
+            <a class="nav-cta" href="./contato.html">Fale Conosco</a>
+            <button class="hamburger" id="hamburger" onclick="toggleDrawer()">
+                <span class="hamburger-line"></span>
+                <span class="hamburger-line"></span>
+                <span class="hamburger-line"></span>
+            </button>
+        </div>
+    </header>
+
+    <!-- HERO -->
+    <section class="product-page-hero">
+        <div class="product-page-hero-bg">
+            <img src="https://images.unsplash.com/photo-1603394151492-5e9b974b090b?w=1800&h=900&fit=crop&q=70"
+                alt="Camisaria" />
+            <div class="product-page-hero-bg-grad"></div>
+        </div>
+        <div class="product-page-hero-content">
+            <div class="eyebrow">
+                <div class="eyebrow-line"></div><span class="eyebrow-text">Sobre Nós</span>
+            </div>
+            <h1 class="product-page-h1 serif">Uma história contada<br><em class="gold italic">pelo que vestimos</em>
+            </h1>
+        </div>
+    </section>
+
+    <!-- Split intro -->
+    <div class="about-split">
+        <div class="about-visual">
+            <img src="https://images.unsplash.com/photo-1549037173-e3b717902c57?w=900&h=1100&fit=crop&q=70"
+                alt="Loja" />
+            <div class="about-visual-grad"></div>
+        </div>
+        <div class="about-text-block">
+            <div class="reveal">
+                <div class="eyebrow">
+                    <div class="eyebrow-line"></div><span class="eyebrow-text">Nossa Essência</span>
+                </div>
+                <p class="about-quote">"A roupa é a primeira palavra que você diz antes de abrir a boca."</p>
+                <p class="about-p">A Camisaria Pai &amp; Filho nasceu em 1987 das mãos de Seu Antônio Silva, um
+                    homem que acreditava que todo brasileiro merecia vestir bem. Com uma pequena loja no centro de
+                    São Paulo e muita determinação, ele começou a construir o que se tornaria uma das referências
+                    mais sólidas em moda masculina da cidade.</p>
+                <p class="about-p">Hoje, com Carlos na gestão e Marina no atendimento, a loja mantém a alma de
+                    sempre: o conhecimento passado de pai para filho, o olho clínico para tecidos de qualidade e o
+                    respeito genuíno por cada homem que entra pela porta buscando se vestir bem.</p>
+                <div class="about-stats-row">
+                    <div class="about-stat">
+                        <span class="about-stat-n serif gold">37+</span>
+                        <span class="about-stat-l">Anos de história</span>
+                    </div>
+                    <div class="about-stat">
+                        <span class="about-stat-n serif gold">5k+</span>
+                        <span class="about-stat-l">Clientes ativos</span>
+                    </div>
+                    <div class="about-stat">
+                        <span class="about-stat-n serif gold">200+</span>
+                        <span class="about-stat-l">Modelos em estoque</span>
+                    </div>
+                    <div class="about-stat">
+                        <span class="about-stat-n serif gold">3</span>
+                        <span class="about-stat-l">Gerações</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Values -->
+    <section class="section" style="background:var(--bg1)">
+        <div class="container">
+            <div class="reveal" style="margin-bottom:4rem">
+                <div class="eyebrow">
+                    <div class="eyebrow-line"></div><span class="eyebrow-text">Nossos Valores</span>
+                </div>
+                <h2 class="featured-h2">O que nos<br><em class="gold italic">define</em></h2>
+            </div>
+            <div class="values-grid">
+                <div class="value-card reveal"><span class="value-n">01</span>
+                    <h3 class="value-title serif">Autenticidade</h3>
+                    <p class="value-desc">Clássicos atemporais que continuam elegantes por décadas. Sem tendências
+                        passageiras.</p>
+                </div>
+                <div class="value-card reveal delay-1"><span class="value-n">02</span>
+                    <h3 class="value-title serif">Qualidade</h3>
+                    <p class="value-desc">Cada peça é avaliada em tecido, costura e acabamento antes de chegar ao
+                        cliente.</p>
+                </div>
+                <div class="value-card reveal delay-2"><span class="value-n">03</span>
+                    <h3 class="value-title serif">Tradição</h3>
+                    <p class="value-desc">37 anos de história nos dão autoridade. E isso passa de geração em geração.
+                    </p>
+                </div>
+                <div class="value-card reveal delay-3"><span class="value-n">04</span>
+                    <h3 class="value-title serif">Relacionamento</h3>
+                    <p class="value-desc">Nossos clientes são parceiros. Muitos nos visitam há décadas — e os filhos
+                        deles também.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Timeline -->
+    <div class="timeline-wrap">
+        <div class="container">
+            <div class="reveal" style="margin-bottom:4rem">
+                <div class="eyebrow">
+                    <div class="eyebrow-line"></div><span class="eyebrow-text">Nossa Trajetória</span>
+                </div>
+                <h2 class="featured-h2">Uma linha do<br><em class="gold italic">tempo</em></h2>
+            </div>
+        </div>
+        <div class="timeline" id="timeline-el"></div>
+    </div>
+
+    <!-- Team -->
+    <section class="section" style="background:var(--bg1)">
+        <div class="container">
+            <div class="reveal" style="margin-bottom:4rem">
+                <div class="eyebrow">
+                    <div class="eyebrow-line"></div><span class="eyebrow-text">A Família</span>
+                </div>
+                <h2 class="featured-h2">Quem faz<br><em class="gold italic">acontecer</em></h2>
+            </div>
+            <div class="team-grid" id="team-grid"></div>
+        </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="section" style="background:var(--bg);text-align:center">
+        <div class="container">
+            <div class="reveal">
+                <div class="eyebrow" style="justify-content:center">
+                    <div class="eyebrow-line"></div><span class="eyebrow-text">Pronto para fazer parte?</span>
+                </div>
+                <h2 class="featured-h2" style="max-width:500px;margin:0 auto 2.5rem">Venha nos <em
+                        class="gold italic">visitar</em></h2>
+                <div style="display:flex;flex-wrap:wrap;gap:1rem;justify-content:center">
+                    <a class="btn btn-primary" href="./produtos.html"><span>Ver Coleção</span></a>
+                    <a class="btn btn-ghost-line" href="./contato.html"><span>Fale Conosco</span></a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+        <div class="footer-gold"></div>
+        <div class="footer-inner">
+            <div class="footer-grid">
+                <div>
+                    <a class="nav-logo" href="./index.html">
+                        <div class="nav-logo-mark">C</div>
+                        <div>
+                            <span class="nav-logo-sub">Camisaria</span>
+                            <span class="nav-logo-name">Pai &amp; Filho</span>
+                        </div>
+                    </a>
+                    <p class="footer-brand-p">Há mais de 37 anos vestindo homens com elegância, qualidade e tradição.
+                    </p>
+                </div>
+                <div>
+                    <h4 class="footer-col-title">Páginas</h4>
+                    <div class="footer-links">
+                        <a class="footer-link" href="./index.html">Início</a>
+                        <a class="footer-link" href="./produtos.html">Produtos</a>
+                        <a class="footer-link" href="./blog.html">Blog</a>
+                        <a class="footer-link" href="./sobre.html">Sobre Nós</a>
+                        <a class="footer-link" href="./contato.html">Contato</a>
+                    </div>
+                </div>
+                <div>
+                    <h4 class="footer-col-title">Categorias</h4>
+                    <div class="footer-links">
+                        <a class="footer-link" href="./produtos.html?cat=Ternos">Ternos</a>
+                        <a class="footer-link" href="./produtos.html?cat=Camisas">Camisas</a>
+                        <a class="footer-link" href="./produtos.html?cat=Sapatos">Sapatos</a>
+                        <a class="footer-link" href="./produtos.html?cat=Gravatas">Gravatas</a>
+                        <a class="footer-link" href="./produtos.html?cat=Cintos">Cintos</a>
+                    </div>
+                </div>
+                <div>
+                    <h4 class="footer-col-title">Informações</h4>
+                    <div class="footer-info-list">
+                        <div><span class="footer-info-label">Endereço</span><span class="footer-info-val">Rua das
+                                Camisas, 123 — Centro, São Paulo</span></div>
+                        <div><span class="footer-info-label">Horário</span><span class="footer-info-val">Seg–Sex: 9h às
+                                19h · Sáb: 9h às 17h</span></div>
+                        <div><span class="footer-info-label">Telefone</span><span class="footer-info-val">(11) 9
+                                9999-9999</span></div>
+                        <div><span class="footer-info-label">Email</span><span
+                                class="footer-info-val">contato@camisariapaifilho.com.br</span></div>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <span class="footer-copy">© 2024 Camisaria Pai &amp; Filho. Todos os direitos reservados.</span>
+                <span class="footer-tagline serif">Tradição que veste gerações.</span>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/data.js"></script>
+    <script src="js/shared.js"></script>
+    <script src="js/sobre.js"></script>
+
+</body>
+
+</html>
