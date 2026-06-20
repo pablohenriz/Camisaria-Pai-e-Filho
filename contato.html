@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Artigo — Camisaria Pai & Filho</title>
+    <title>Contato — Camisaria Pai & Filho</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="stylesheet" href="css/style.css">
     <link
@@ -37,9 +37,9 @@
         <nav class="nav-links">
             <a class="nav-link" href="./index.html">Início</a>
             <a class="nav-link" href="./produtos.html">Produtos</a>
-            <a class="nav-link active" href="./blog.html">Blog</a>
+            <a class="nav-link" href="./blog.html">Blog</a>
             <a class="nav-link" href="./sobre.html">Sobre Nós</a>
-            <a class="nav-link" href="./contato.html">Contato</a>
+            <a class="nav-link active" href="./contato.html">Contato</a>
         </nav>
         <div class="nav-right">
             <a class="nav-cta" href="./contato.html">Fale Conosco</a>
@@ -51,26 +51,132 @@
         </div>
     </header>
 
-    <!-- VOLTAR -->
-    <a class="article-back" href="./blog.html">
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-            <path d="M19 12H5M12 19l-7-7 7-7" />
-        </svg>
-        Voltar para o Blog
-    </a>
-
-    <!-- HERO DO ARTIGO — preenchido pelo JS -->
-    <section class="article-hero">
-        <img id="article-img" src="" alt="" />
-        <div class="article-hero-grad"></div>
-        <div class="article-hero-content">
-            <div class="article-meta" id="article-meta"></div>
-            <h1 class="article-h1 serif" id="article-title"></h1>
+    <!-- HERO -->
+    <section class="product-page-hero">
+        <div class="product-page-hero-bg">
+            <img src="https://images.unsplash.com/photo-1614968017289-459022d12033?w=1800&h=800&fit=crop&q=70"
+                alt="Contato" />
+            <div class="product-page-hero-bg-grad"></div>
+        </div>
+        <div class="product-page-hero-content">
+            <div class="eyebrow">
+                <div class="eyebrow-line"></div><span class="eyebrow-text">Fale Conosco</span>
+            </div>
+            <h1 class="product-page-h1 serif">Estamos aqui<br><em class="gold italic">para você</em></h1>
         </div>
     </section>
 
-    <!-- CORPO DO ARTIGO — preenchido pelo JS -->
-    <div class="article-body" id="article-body"></div>
+    <!-- INFORMAÇÕES E FORMULÁRIO -->
+    <section class="section" style="background:var(--bg)">
+        <div class="container">
+            <div class="contact-grid">
+                <div class="reveal">
+                    <div class="eyebrow">
+                        <div class="eyebrow-line"></div><span class="eyebrow-text">Informações</span>
+                    </div>
+                    <h2 class="contact-h2 serif">Venha nos visitar<br><em class="gold italic">pessoalmente</em></h2>
+                    <p class="contact-sub">Nada substitui a experiência de tocar o tecido e experimentar o terno.
+                        Nossa equipe está pronta para atendê-lo com dedicação.</p>
+                    <div class="contact-cards">
+                        <div class="contact-card">
+                            <div class="contact-card-icon">
+                                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                    stroke-width="1.3">
+                                    <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z" />
+                                    <circle cx="12" cy="10" r="3" />
+                                </svg>
+                            </div>
+                            <div>
+                                <span class="contact-card-label">Endereço</span>
+                                <span class="contact-card-line">Rua das Camisas, 123 — Centro</span>
+                                <span class="contact-card-line">São Paulo, SP · CEP 01000-000</span>
+                            </div>
+                        </div>
+                        <div class="contact-card">
+                            <div class="contact-card-icon">
+                                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                    stroke-width="1.3">
+                                    <circle cx="12" cy="12" r="10" />
+                                    <polyline points="12 6 12 12 16 14" />
+                                </svg>
+                            </div>
+                            <div>
+                                <span class="contact-card-label">Horário</span>
+                                <span class="contact-card-line">Segunda a Sexta: 9h às 19h</span>
+                                <span class="contact-card-line">Sábado: 9h às 17h · Domingo: Fechado</span>
+                            </div>
+                        </div>
+                        <div class="contact-card">
+                            <div class="contact-card-icon">
+                                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                    stroke-width="1.3">
+                                    <path
+                                        d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 11a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.6 0h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9a16 16 0 0 0 6.29 6.29l1.36-1.36a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z" />
+                                </svg>
+                            </div>
+                            <div>
+                                <span class="contact-card-label">Contato</span>
+                                <span class="contact-card-line">(11) 9 9999-9999</span>
+                                <span class="contact-card-line">contato@camisariapaifilho.com.br</span>
+                            </div>
+                        </div>
+                    </div>
+                    <a class="btn-wa" href="https://wa.me/5511999999999" target="_blank" rel="noopener">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+                            <path
+                                d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z" />
+                        </svg>
+                        Chamar no WhatsApp
+                    </a>
+                </div>
+
+                <div class="reveal delay-2">
+                    <div class="eyebrow">
+                        <div class="eyebrow-line"></div><span class="eyebrow-text">Mensagem</span>
+                    </div>
+                    <div class="form-success" id="form-success">
+                        <div class="form-success-icon">
+                            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="1.5">
+                                <polyline points="20 6 9 17 4 12" />
+                            </svg>
+                        </div>
+                        <h3 class="form-success-h3 serif">Mensagem enviada!</h3>
+                        <p class="form-success-p">Nossa equipe entrará em contato em breve.</p>
+                        <button class="form-success-btn" onclick="resetForm()">Nova mensagem</button>
+                    </div>
+                    <form id="contact-form" onsubmit="submitForm(event)">
+                        <div class="form-row">
+                            <div><label class="form-label">Nome completo</label><input class="form-input" type="text"
+                                    required /></div>
+                            <div><label class="form-label">Telefone</label><input class="form-input" type="tel" /></div>
+                        </div>
+                        <div class="form-group"><label class="form-label">Email</label><input class="form-input"
+                                type="email" required /></div>
+                        <div class="form-group"><label class="form-label">Mensagem</label><textarea
+                                class="form-textarea" rows="5" required></textarea></div>
+                        <button class="form-submit" type="submit">Enviar Mensagem</button>
+                        <p class="form-note">Respondemos em até 1 dia útil.</p>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- MAPA -->
+    <div class="contact-map">
+        <img src="https://images.unsplash.com/photo-1578353022142-09264fd64295?w=1800&h=400&fit=crop&q=60" alt="" />
+        <div class="contact-map-overlay">
+            <div class="contact-map-pin">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#0a0a0a" stroke-width="2">
+                    <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z" />
+                    <circle cx="12" cy="10" r="3" />
+                </svg>
+            </div>
+            <p class="contact-map-addr">Rua das Camisas, 123 — Centro, São Paulo</p>
+            <a class="contact-map-link" href="https://maps.google.com" target="_blank" rel="noopener">Abrir no Maps</a>
+        </div>
+    </div>
 
     <!-- FOOTER -->
     <footer>
@@ -149,7 +255,7 @@
 
     <script src="js/data.js"></script>
     <script src="js/shared.js"></script>
-    <script src="js/artigo.js"></script>
+    <script src="js/contato.js"></script>
 
 </body>
 

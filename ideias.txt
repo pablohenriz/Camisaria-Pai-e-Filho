@@ -1,0 +1,17 @@
+colocar uma animacao ou um efeito nas imagens dos colaboradores
+
+pegar imagens da loja para poder colocar no nosso site
+
+pegar a logo da empresa e colocar no site
+
+deixar a parte para poder ver os produtos mais bonita por que esta muito simples
+
+colocar uma animacao de carregamento de pagina 
+
+como estamos mexendo com formularios, tem que colocar um sistema de politica de privacidade, e os cookings 
+
+colocar mais animacoes para quando estiver vendo a pagina
+
+arrumar o desempenho do sitem, a meta e deixar ele o mais leve possivel
+
+colocar um botao para poder ver os outros comentarios dos clientes para o site
