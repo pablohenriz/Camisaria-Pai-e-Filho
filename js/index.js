@@ -7,7 +7,7 @@ window.addEventListener('load', () => {
     setTimeout(() => {
         const loader = document.getElementById('loader');
         if (loader) loader.classList.add('done');
-    }, 1600);
+    }, 2900);
 });
 
 // ── MARQUEE ──
@@ -31,26 +31,8 @@ window.addEventListener('load', () => {
     }, 5000);
 })();
 
-// ── HERO: PARALLAX ──
-(function () {
-    const hero = document.getElementById('hero-sect');
-    const bg = document.getElementById('hero-bg');
-    if (!hero || !bg) return;
-    hero.addEventListener('mousemove', e => {
-        const r = hero.getBoundingClientRect();
-        const x = ((e.clientX - r.left) / r.width - .5) * 14;
-        const y = ((e.clientY - r.top) / r.height - .5) * 6;
-        bg.style.transform = `translate(${x}px,${y}px)`;
-    });
-    hero.addEventListener('mouseleave', () => {
-        bg.style.transform = 'translate(0,0)';
-    });
-})();
-
 // ── HOME: CATEGORIA BAR ──
 let homeCatFilter = 'Todos';
-let homeVisibleCount = 8;
-let homeLoadObserver = null;
 
 function renderHomeCatBar() {
     const el = document.getElementById('home-cat-bar');
@@ -62,7 +44,6 @@ function renderHomeCatBar() {
 
 function setHomeFilter(c) {
     homeCatFilter = c;
-    homeVisibleCount = 8;
     renderHomeCatBar();
     renderHomeFeatured();
 }
@@ -90,56 +71,67 @@ function renderHomeFeatured() {
             </div>
         </button>
     `).join('');
-    renderHomeMore();
     attachReveal();
 }
 
-function renderHomeMore() {
-    const list = homeFilteredList();
-    const rest = list.slice(3, 3 + homeVisibleCount);
+// ── HOME: CARROSSÉIS POR CATEGORIA (terno, camisa, etc) ──
+function renderHomeCategories() {
     const el = document.getElementById('home-more-grid');
     if (!el) return;
-    el.innerHTML = rest.map(s => `
-        <button class="p-card" onclick="location.href='./produto.html?id=${s.id}'">
-            <div class="p-card-img">
-                <img src="${s.imgs[0]}" alt="${s.name}" loading="lazy"/>
-                <div class="p-card-over"></div>
-                ${s.badge ? `<span class="p-card-badge">${s.badge}</span>` : ''}
-                <div class="p-card-info">
-                    <span class="p-card-cat">${s.type}</span>
-                    <h3 class="p-card-name serif">${s.name}</h3>
-                </div>
-                <div class="p-card-arrow">
-                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+    const cats = productTypes.filter(c => c !== 'Todos');
+
+    el.innerHTML = cats.map(cat => {
+        const items = suits.filter(s => s.type === cat);
+        if (!items.length) return '';
+        const trackId = 'track-' + cat.replace(/\s+/g, '-');
+
+        return `
+        <div class="cat-section reveal">
+            <div class="cat-section-head">
+                <h3 class="cat-section-title serif">${cat}</h3>
+                <div class="cat-section-nav">
+                    <button class="cat-nav-btn" onclick="scrollCatTrack('${trackId}', -1)" aria-label="Anterior">
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M15 18l-6-6 6-6"/></svg>
+                    </button>
+                    <button class="cat-nav-btn" onclick="scrollCatTrack('${trackId}', 1)" aria-label="Próximo">
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M9 18l6-6-6-6"/></svg>
+                    </button>
                 </div>
             </div>
-        </button>
-    `).join('');
-    const totalAvailable = list.length - 3;
-    const msg = document.getElementById('home-load-msg');
-    if (msg) {
-        if (totalAvailable <= 0) msg.textContent = '';
-        else if (homeVisibleCount >= totalAvailable) msg.textContent = 'Você viu todos os produtos desta categoria';
-        else msg.textContent = 'Carregando mais produtos ao rolar a página…';
-    }
+            <div class="cat-carousel">
+                <div class="cat-track" id="${trackId}">
+                    ${items.map(s => `
+                        <button class="p-card cat-card" onclick="location.href='./produto.html?id=${s.id}'">
+                            <div class="p-card-img">
+                                <img src="${s.imgs[0]}" alt="${s.name}" loading="lazy"/>
+                                <div class="p-card-over"></div>
+                                ${s.badge ? `<span class="p-card-badge">${s.badge}</span>` : ''}
+                                <div class="p-card-info">
+                                    <span class="p-card-cat">${s.type}</span>
+                                    <h3 class="p-card-name serif">${s.name}</h3>
+                                </div>
+                            </div>
+                        </button>
+                    `).join('')}
+                    <a class="cat-card cat-viewmore" href="./produtos.html?cat=${encodeURIComponent(cat)}">
+                        <span>Ver mais</span>
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                    </a>
+                </div>
+            </div>
+        </div>`;
+    }).join('');
+
+    attachReveal();
 }
 
-function setupHomeInfiniteScroll() {
-    if (homeLoadObserver) homeLoadObserver.disconnect();
-    homeLoadObserver = new IntersectionObserver((entries) => {
-        entries.forEach(e => {
-            if (e.isIntersecting) {
-                const list = homeFilteredList();
-                const totalAvailable = list.length - 3;
-                if (homeVisibleCount < totalAvailable) {
-                    homeVisibleCount = Math.min(homeVisibleCount + 4, totalAvailable);
-                    renderHomeMore();
-                }
-            }
-        });
-    }, { rootMargin: '400px' });
-    const sentinel = document.getElementById('home-load-sentinel');
-    if (sentinel) homeLoadObserver.observe(sentinel);
+// arrasta o carrossel de uma categoria pra esquerda/direita ao clicar nas setas
+function scrollCatTrack(trackId, dir) {
+    const track = document.getElementById(trackId);
+    if (!track) return;
+    const card = track.querySelector('.cat-card');
+    const step = card ? card.getBoundingClientRect().width + 12 : 240;
+    track.scrollBy({ left: dir * step * 2, behavior: 'smooth' });
 }
 
 // ── SERVICES ──
@@ -185,6 +177,16 @@ function renderT(i) {
     }, 200);
 }
 
+function nextTestimonial() {
+    clearInterval(tTimer);
+    renderT((tIdx + 1) % testimonials.length);
+}
+
+function prevTestimonial() {
+    clearInterval(tTimer);
+    renderT((tIdx - 1 + testimonials.length) % testimonials.length);
+}
+
 (function () {
     const dots = document.getElementById('t-dots');
     if (!dots) return;
@@ -198,4 +200,17 @@ function renderT(i) {
 // ── INIT ──
 renderHomeCatBar();
 renderHomeFeatured();
-setupHomeInfiniteScroll();
+renderHomeCategories();
+
+// ── BOTÃO VOLTAR AO TOPO ──
+function scrollToTop() {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+(function () {
+    const btn = document.getElementById('back-to-top');
+    if (!btn) return;
+    window.addEventListener('scroll', () => {
+        btn.classList.toggle('show', window.scrollY > 600);
+    });
+})();

@@ -18,6 +18,7 @@
     <!-- LOADER -->
     <div id="loader">
         <div class="loader-inner">
+            <img src="/img/logo-new-color.png" alt="logo" class="loader-img">
             <div class="loader-logo">
                 <span>P</span><span>A</span><span>I</span><span>&nbsp;</span><span>&amp;</span><span>&nbsp;</span><span>F</span><span>I</span><span>L</span><span>H</span><span>O</span>
             </div>
@@ -39,10 +40,12 @@
     <!-- NAVBAR -->
     <header id="nav">
         <a class="nav-logo" href="./index.html">
-            <div class="nav-logo-mark">C</div>
+            <div class="nav-logo-mark">
+                <img src="/img/logo-new-color.png" class="logo-normal" alt="logo">
+            </div>
             <div>
                 <span class="nav-logo-sub">Camisaria</span>
-                <span class="nav-logo-name">Pai &amp; Filho</span>
+                <span class="nav-logo-name">Pai & Filho</span>
             </div>
         </a>
         <nav class="nav-links">
@@ -88,7 +91,7 @@
                 <span>Fundada em 1987 · São Paulo</span>
             </div>
             <h1 class="hero-h1">
-                <span class="hero-h1-line"><span class="hero-h1-inner">Veste-se</span></span>
+                <span class="hero-h1-line"><span class="hero-h1-inner">Vista-se</span></span>
                 <span class="hero-h1-line"><span class="hero-h1-inner" style="color:var(--gold);font-style:italic">como
                         um</span></span>
                 <span class="hero-h1-line"><span class="hero-h1-inner"
@@ -226,7 +229,23 @@
                         </div>
                         <span class="google-badge-text">Exemplo — substituir pela nota real do Google</span>
                     </div>
-                    <div class="t-dots" id="t-dots"></div>
+                    <div class="t-nav-row">
+                        <div class="t-dots" id="t-dots"></div>
+                        <div class="t-arrows">
+                            <button class="t-nav-btn" onclick="prevTestimonial()" aria-label="Depoimento anterior">
+                                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                    stroke-width="1.5">
+                                    <path d="M15 18l-6-6 6-6" />
+                                </svg>
+                            </button>
+                            <button class="t-nav-btn" onclick="nextTestimonial()" aria-label="Próximo depoimento">
+                                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                    stroke-width="1.5">
+                                    <path d="M9 18l6-6-6-6" />
+                                </svg>
+                            </button>
+                        </div>
+                    </div>
                 </div>
                 <div class="reveal delay-2">
                     <div class="t-card">
@@ -345,6 +364,13 @@
             </div>
         </div>
     </footer>
+
+    <!-- VOLTAR AO TOPO -->
+    <button class="back-to-top" id="back-to-top" onclick="scrollToTop()" aria-label="Voltar ao topo">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M12 19V5M5 12l7-7 7 7" />
+        </svg>
+    </button>
 
     <script src="js/data.js"></script>
     <script src="js/shared.js"></script>
