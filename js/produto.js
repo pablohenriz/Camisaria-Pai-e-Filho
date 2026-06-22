@@ -1,18 +1,71 @@
 // ══════════════════════════════════════════════════════════════
 // js/produto.js — LÓGICA DA PÁGINA PRODUTO (produto.html)
-// Lê ?id=1 da URL e preenche a página com os dados do produto.
 // ══════════════════════════════════════════════════════════════
 
-function switchImg(src, thumbEl) {
+let currentImgIndex = 0;
+let allImgs = [];
+
+function switchImg(src, thumbEl, index) {
     const mainImg = document.getElementById('pd-main-img');
     if (!mainImg) return;
+
+    currentImgIndex = index !== undefined ? index : allImgs.indexOf(src);
+
     mainImg.classList.add('changing');
     setTimeout(() => {
         mainImg.src = src;
         mainImg.classList.remove('changing');
     }, 250);
+
     document.querySelectorAll('.pd-thumb').forEach(t => t.classList.remove('active'));
-    thumbEl.classList.add('active');
+    if (thumbEl) {
+        thumbEl.classList.add('active');
+    } else {
+        // atualiza thumb pelo index quando chamado pelo swipe
+        const thumbEls = document.querySelectorAll('.pd-thumb');
+        if (thumbEls[currentImgIndex]) thumbEls[currentImgIndex].classList.add('active');
+    }
+}
+
+function initSwipe(element) {
+    let startX = 0;
+    let startY = 0;
+    let isDragging = false;
+
+    element.addEventListener('touchstart', (e) => {
+        startX = e.touches[0].clientX;
+        startY = e.touches[0].clientY;
+        isDragging = true;
+    }, { passive: true });
+
+    element.addEventListener('touchmove', (e) => {
+        if (!isDragging) return;
+        const diffX = Math.abs(e.touches[0].clientX - startX);
+        const diffY = Math.abs(e.touches[0].clientY - startY);
+        // se movimento horizontal > vertical, impede scroll da página
+        if (diffX > diffY) e.preventDefault();
+    }, { passive: false });
+
+    element.addEventListener('touchend', (e) => {
+        if (!isDragging) return;
+        isDragging = false;
+
+        const endX = e.changedTouches[0].clientX;
+        const diff = startX - endX;
+
+        // threshold de 50px para considerar swipe
+        if (Math.abs(diff) < 50) return;
+
+        if (diff > 0) {
+            // swipe para esquerda → próxima imagem
+            const next = (currentImgIndex + 1) % allImgs.length;
+            switchImg(allImgs[next], null, next);
+        } else {
+            // swipe para direita → imagem anterior
+            const prev = (currentImgIndex - 1 + allImgs.length) % allImgs.length;
+            switchImg(allImgs[prev], null, prev);
+        }
+    }, { passive: true });
 }
 
 (function () {
@@ -21,7 +74,6 @@ function switchImg(src, thumbEl) {
     const s = suits.find(x => x.id === id);
 
     if (!s) {
-        // Produto não encontrado — mostra mensagem em vez de quebrar a página
         const wrap = document.querySelector('.pd-wrap');
         if (wrap) {
             wrap.innerHTML = `
@@ -33,6 +85,9 @@ function switchImg(src, thumbEl) {
         }
         return;
     }
+
+    allImgs = s.imgs;
+    currentImgIndex = 0;
 
     document.title = s.name + ' — Camisaria Pai & Filho';
 
@@ -66,7 +121,7 @@ function switchImg(src, thumbEl) {
 
     if (thumbs) {
         thumbs.innerHTML = s.imgs.map((img, i) => `
-            <div class="pd-thumb${i === 0 ? ' active' : ''}" onclick="switchImg('${img}',this)">
+            <div class="pd-thumb${i === 0 ? ' active' : ''}" onclick="switchImg('${img}', this, ${i})">
                 <img src="${img}" alt="${s.name} ${i + 1}" loading="lazy"/>
             </div>
         `).join('');
@@ -76,4 +131,8 @@ function switchImg(src, thumbEl) {
         const waMsg = encodeURIComponent(`Olá! Tenho interesse no ${s.name} (Ref. ${s.ref}). Poderia me dar mais informações?`);
         waBtn.href = `https://wa.me/5511999999999?text=${waMsg}`;
     }
+
+    // inicializa swipe na galeria
+    const gallery = document.querySelector('.pd-gallery-main');
+    if (gallery) initSwipe(gallery);
 })();

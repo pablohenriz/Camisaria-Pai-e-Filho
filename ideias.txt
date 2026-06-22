@@ -2,11 +2,7 @@ colocar uma animacao ou um efeito nas imagens dos colaboradores
 
 pegar imagens da loja para poder colocar no nosso site
 
-pegar a logo da empresa e colocar no site
-
 deixar a parte para poder ver os produtos mais bonita por que esta muito simples
-
-colocar uma animacao de carregamento de pagina 
 
 como estamos mexendo com formularios, tem que colocar um sistema de politica de privacidade, e os cookings 
 
@@ -14,18 +10,14 @@ colocar mais animacoes para quando estiver vendo a pagina
 
 arrumar o desempenho do sitem, a meta e deixar ele o mais leve possivel
 
-colocar um botao para poder ver os outros comentarios dos clientes para o site
-
-colocar o botao de quando estiver descendo na pagina conseguir voltar para o todo da pagina
-
-na parte de contato, tirar o formulario, e colocar uma imagem interativa do google maps para poder mostrar o endereco de forma que quando clica na imagem manda para o maps e mostra aonde e a loja da empresa
-
-colocar tambem aonde sao as duas lojas no index do site 
-
 na parte de contato aonde tem uma imagem atras do titulo eu quero colocar uma imagem da loja deles para poder mostrar como e a loja principal deles
-
-arrumar o comeco da pagina index por que ele esta com o texto muito baixo, principalmente quando na responsividade
-
-arrumar o botao de voltar na parte dos produtos
-
+ 
 arrumar o header na parte de quando foi ver o produto
+
+
+O que faz sentido ter:
+Uma página simples ou seção no footer com algo como "Informações Legais" cobrindo:
+
+CNPJ da empresa — obrigatório pela lei do e-commerce (Decreto 7.962/2013) se houver qualquer venda ou contato comercial pelo site
+Razão social e endereço — pelo mesmo decreto
+Canais de atendimento — telefone e email, que você já tem
