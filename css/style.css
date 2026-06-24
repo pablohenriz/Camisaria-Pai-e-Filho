@@ -148,6 +148,7 @@ img {
     align-items: center;
     justify-content: center;
     transition: opacity .6s var(--ease-out-quart);
+    user-select: none;
 }
 
 #loader.done {
@@ -3187,6 +3188,37 @@ img {
     opacity: .85;
 }
 
+/* ─── CONTATO — botões de ação ─── */
+.contact-action-btns {
+    display: flex;
+    flex-wrap: wrap;
+    gap: .75rem;
+    margin-top: 2rem;
+    align-items: center;
+}
+
+.btn-wa,
+.btn-instagram {
+    flex: 1 1 auto;
+    min-width: 0;
+    justify-content: center;
+    margin: 0;
+    /* remove o margin-top e margin-left individuais */
+    padding: 1rem 1.5rem;
+    white-space: nowrap;
+}
+
+@media (max-width: 480px) {
+    .contact-action-btns {
+        flex-direction: column;
+    }
+
+    .btn-wa,
+    .btn-instagram {
+        width: 100%;
+    }
+}
+
 /* ─── CONTATO — cards de loja ─── */
 .contact-loja-card {
     border: 1px solid var(--gold-border);
@@ -3553,7 +3585,49 @@ img {
     background: #1db954;
 }
 
+/* ─── CARD HOVER CAROUSEL ─── */
+.suit-img,
+.p-card .suit-img {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: top;
+    opacity: 0;
+    transition: opacity .6s var(--ease-in-out), transform .9s var(--ease-out-quart);
+    will-change: opacity;
+}
 
+.suit-img.is-active {
+    opacity: 1;
+}
+
+.suit-card:hover .suit-img.is-active,
+.p-card:hover .suit-img.is-active {
+    transform: scale(1.06);
+}
+
+.suit-img-dots {
+    position: absolute;
+    bottom: 10px;
+    right: 12px;
+    display: flex;
+    gap: 5px;
+    z-index: 10;
+}
+
+.suit-dot {
+    width: 16px;
+    height: 2px;
+    background: rgba(232, 224, 208, 0.3);
+    transition: background .3s, width .3s;
+}
+
+.suit-dot.active {
+    background: var(--gold);
+    width: 24px;
+}
 
 /* ─── FOOTER ─── */
 footer {

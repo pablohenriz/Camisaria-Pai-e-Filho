@@ -3,10 +3,13 @@
 // ══════════════════════════════════════════════════════════════
 
 // ── LOADER ──
+document.body.style.overflow = 'hidden';
+
 window.addEventListener('load', () => {
     setTimeout(() => {
         const loader = document.getElementById('loader');
         if (loader) loader.classList.add('done');
+        document.body.style.overflow = '';
     }, 2900);
 });
 
@@ -52,6 +55,7 @@ function homeFilteredList() {
     return homeCatFilter === 'Todos' ? suits : suits.filter(s => s.type === homeCatFilter);
 }
 
+// ── HOME: FEATURED GRID ──
 function renderHomeFeatured() {
     const list = homeFilteredList();
     const top3 = list.slice(0, 3);
@@ -60,7 +64,8 @@ function renderHomeFeatured() {
     grid.innerHTML = top3.map((s, i) => `
         <button class="suit-card reveal${i > 0 ? ' delay-' + i : ''}" onclick="location.href='./produto.html?id=${s.id}'" style="text-align:left">
             <div class="suit-card-img-wrap">
-                <img src="${s.imgs[0]}" alt="${s.name}" loading="lazy"/>
+                <img class="suit-img suit-img--1 is-active" src="${s.imgs[0]}" alt="${s.name}" loading="lazy"/>
+                ${s.imgs[1] ? `<img class="suit-img suit-img--2" src="${s.imgs[1]}" alt="${s.name}" loading="lazy"/>` : ''}
                 <div class="suit-card-overlay"></div>
                 ${s.badge ? `<span class="suit-card-badge">${s.badge}</span>` : ''}
                 <div class="suit-card-info">
@@ -68,13 +73,15 @@ function renderHomeFeatured() {
                     <h3 class="suit-card-name serif">${s.name}</h3>
                     <div class="suit-card-cta">Ver detalhes <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg></div>
                 </div>
+                ${s.imgs[1] ? `<div class="suit-img-dots"><span class="suit-dot active"></span><span class="suit-dot"></span></div>` : ''}
             </div>
         </button>
     `).join('');
     attachReveal();
+    attachCardHover();
 }
 
-// ── HOME: CARROSSÉIS POR CATEGORIA (terno, camisa, etc) ──
+// ── HOME: CARROSSÉIS POR CATEGORIA ──
 function renderHomeCategories() {
     const el = document.getElementById('home-more-grid');
     if (!el) return;
@@ -103,13 +110,15 @@ function renderHomeCategories() {
                     ${items.map(s => `
                         <button class="p-card cat-card" onclick="location.href='./produto.html?id=${s.id}'">
                             <div class="p-card-img">
-                                <img src="${s.imgs[0]}" alt="${s.name}" loading="lazy"/>
+                                <img class="suit-img suit-img--1 is-active" src="${s.imgs[0]}" alt="${s.name}" loading="lazy"/>
+                                ${s.imgs[1] ? `<img class="suit-img suit-img--2" src="${s.imgs[1]}" alt="${s.name}" loading="lazy"/>` : ''}
                                 <div class="p-card-over"></div>
                                 ${s.badge ? `<span class="p-card-badge">${s.badge}</span>` : ''}
                                 <div class="p-card-info">
                                     <span class="p-card-cat">${s.type}</span>
                                     <h3 class="p-card-name serif">${s.name}</h3>
                                 </div>
+                                ${s.imgs[1] ? `<div class="suit-img-dots"><span class="suit-dot active"></span><span class="suit-dot"></span></div>` : ''}
                             </div>
                         </button>
                     `).join('')}
@@ -123,15 +132,45 @@ function renderHomeCategories() {
     }).join('');
 
     attachReveal();
+    attachCardHover();
 }
 
-// arrasta o carrossel de uma categoria pra esquerda/direita ao clicar nas setas
+// ── SCROLL CARROSSEL DE CATEGORIA ──
 function scrollCatTrack(trackId, dir) {
     const track = document.getElementById(trackId);
     if (!track) return;
     const card = track.querySelector('.cat-card');
     const step = card ? card.getBoundingClientRect().width + 12 : 240;
     track.scrollBy({ left: dir * step * 2, behavior: 'smooth' });
+}
+
+// ── CARD HOVER CAROUSEL ──
+function attachCardHover() {
+    document.querySelectorAll('.suit-card, .p-card').forEach(card => {
+        const img1 = card.querySelector('.suit-img--1');
+        const img2 = card.querySelector('.suit-img--2');
+        const dots = card.querySelectorAll('.suit-dot');
+        if (!img2) return;
+
+        let timer = null;
+
+        card.addEventListener('mouseenter', () => {
+            timer = setTimeout(() => {
+                img1.classList.remove('is-active');
+                img2.classList.add('is-active');
+                dots[0]?.classList.remove('active');
+                dots[1]?.classList.add('active');
+            }, 600);
+        });
+
+        card.addEventListener('mouseleave', () => {
+            clearTimeout(timer);
+            img1.classList.add('is-active');
+            img2.classList.remove('is-active');
+            dots[0]?.classList.add('active');
+            dots[1]?.classList.remove('active');
+        });
+    });
 }
 
 // ── SERVICES ──
